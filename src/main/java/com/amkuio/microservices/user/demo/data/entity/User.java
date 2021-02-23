@@ -1,10 +1,14 @@
 package com.amkuio.microservices.user.demo.data.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class User {
@@ -24,6 +28,13 @@ public class User {
 
 	@Column(name="PHONE")
 	private String phone;
+	
+	@Column(name="DOB")
+	@JsonFormat(pattern = "YYYY-MM-dd")
+	private Date dob;
+	
+	@Column(name="BIRTH_PLACE")
+	private String birthPlace;
 
 	public Integer getId() {
 		return id;
@@ -63,6 +74,22 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getBirthPlace() {
+		return birthPlace;
+	}
+
+	public void setBirthPlace(String birthPlace) {
+		this.birthPlace = birthPlace;
 	}
 
 }
